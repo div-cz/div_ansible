@@ -1,0 +1,63 @@
+---
+# tasks file for packages
+- name: Install div.cz mysql
+  include_tasks: div_mysql.yml
+
+- name: Update apt cache
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: Upgrade packages
+  become: yes
+  apt:
+    upgrade: yes
+    autoclean: yes
+
+- name: Install the latest versions of necessary DIV packages
+  ansible.builtin.package:
+    name:
+      - nginx
+      - python3
+      - python3-venv
+      - python3-dev
+      - python3-pip
+      - libpq-dev
+      - build-essential
+      - ufw
+    state: latest
+
+- name: Remove directory if it exists
+  file:
+    path: /var/www/div_app
+    state: absent
+
+- name: Clone repository
+  git:
+    repo: https://github.com/div-cz/div_app.git
+    dest: /var/www/div_app
+
+- name: Change owner recursively
+  file:
+    path: /var/www/div_app
+    owner: www-data
+    recurse: yes
+
+- name: Create virtual environment
+  become_user: www-data
+  ansible.builtin.command: python3 -m venv /var/www/div_app
+
+- name: Install python packages
+  ansible.builtin.pip:
+    virtualenv: /var/www/div_app
+    state: present
+    name:
+      - uwsgi
+      - django
+
+- name: Copy uwsgi config
+  ansible.builtin.copy:
+    src: files/div.ini
+    dest: /var/www/div_app/div.ini
+    owner: www-data
+    group: www-data

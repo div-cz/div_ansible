@@ -1,0 +1,15 @@
+---
+# tasks file for packages
+
+- name: Install the latest versions of necessary packages
+  ansible.builtin.package:
+    name:
+      - vim
+      - screen
+      - tcpdump
+      - git
+      - telnet
+      - nmap
+      - wget
+      - htop
+    state: latest

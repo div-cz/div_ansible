@@ -1,0 +1,18 @@
+Port 22
+LogLevel VERBOSE
+MaxAuthTries 2
+MaxSessions 2
+AuthorizedKeysFile      .ssh/authorized_keys
+AllowAgentForwarding no
+AllowTcpForwarding no
+X11Forwarding no
+TCPKeepAlive no
+Compression no
+ClientAliveInterval 120
+ClientAliveCountMax 2
+UsePAM yes
+UseDNS no
+Subsystem       sftp    internal-sftp
+AllowUsers root smoofy
+PermitRootLogin without-password
+PrintMotd no

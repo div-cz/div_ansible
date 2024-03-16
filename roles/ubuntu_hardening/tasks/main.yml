@@ -1,0 +1,30 @@
+---
+# tasks file for centos_hardening
+- name: Harden kernel parameters and modules
+  include_tasks: kernel.yml
+  
+- name: Copy SSH config
+  ansible.builtin.copy:
+    src: templates/sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: '0600'
+  notify:
+    - Restart ssh
+    
+- name: Change hash rounds
+  lineinfile:
+    dest: /etc/login.defs
+    state: present
+    create: yes
+    line: "{{ item }}"
+  loop:
+    - "SHA_CRYPT_MIN_ROUNDS 50000"
+    - "SHA_CRYPT_MAX_ROUNDS 50000"
+
+- name: Replace a line
+  lineinfile:
+    path: /etc/login.defs
+    regexp: '^umask'
+    line: 'umask 027'

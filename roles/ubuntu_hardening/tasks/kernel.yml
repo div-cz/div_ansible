@@ -1,0 +1,29 @@
+---
+# tasks file for kernel parameters
+- name: Set kernel parameters
+  ansible.posix.sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+  loop:
+    - { name: "fs.protected_fifos", value: "2" }
+    - { name: "fs.protected_regular", value: "2" }
+    - { name: "kernel.dmesg_restrict", value: "1" }
+    - { name: "kernel.kptr_restrict", value: "2" }
+    - { name: "kernel.modules_disabled", value: "1" }
+    - { name: "kernel.perf_event_paranoid", value: "3" }
+    - { name: "kernel.sysrq", value: "0" }
+    - { name: "kernel.yama.ptrace_scope", value: "1" }
+    - { name: "net.core.bpf_jit_harden", value: "2" }
+    - { name: "net.ipv4.conf.all.accept_redirects", value: "0" }
+    - { name: "net.ipv4.conf.all.log_martians", value: "1" }
+    - { name: "net.ipv4.conf.all.send_redirects", value: "0" }
+    - { name: "net.ipv4.conf.default.accept_redirects", value: "0" }
+    - { name: "net.ipv4.conf.default.accept_source_route", value: "0" }
+    - { name: "net.ipv4.conf.default.log_martians", value: "1" }
+    - { name: "net.ipv6.conf.all.accept_redirects", value: "0" }
+    - { name: "net.ipv6.conf.default.accept_redirects", value: "0" }
+    - { name: "net.ipv4.conf.all.rp_filter", value: "1" }
+    - { name: "dev.tty.ldisc_autoload", value: "0" }
+    - { name: "fs.suid_dumpable", value: "0" }
+    - { name: "kernel.unprivileged_bpf_disabled", value: "1" }

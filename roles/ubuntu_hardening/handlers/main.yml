@@ -1,0 +1,6 @@
+---
+# handlers file for centos_hardening
+- name: Restart ssh
+  ansible.builtin.service:
+    name: sshd
+    state: restarted

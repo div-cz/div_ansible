@@ -1,0 +1,7 @@
+- name: Installation of DIV test machine
+  hosts: div
+  roles:
+    - ubuntu_hardening
+    - packages
+    - div-packages
+  

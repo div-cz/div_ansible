@@ -2,9 +2,10 @@
 Make a server great again.
 
 ## Table of Contents
-1. [How to start](#how-to-start)
-2. [Prerequisites](#prerequisites)
-3. [License](#license)
+1. [Prerequisites](#prerequisites)
+2. [How to start](#how-to-start)
+3. [Local Computer](#local-computer)
+4. [License](#license)
 
 ## Prerequisites<!--#prerequisites-->
 Ubuntu server 23.10
@@ -16,6 +17,10 @@ Ubuntu server 23.10
 - cd /home/user/.ansible
 - touch hosts
 - touch ansible.cfg
+
+## Local computer<!--#local-computer-->
+- cd /tmp
+- git clone https://github.com/div-cz/div_ansible.git
 
 ## License<!--#license-->
 This project is shared under the MIT License. See `LICENSE.md` for details.

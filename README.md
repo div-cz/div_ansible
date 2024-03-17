@@ -32,8 +32,9 @@ Ubuntu server 23.10
 ## Local computer<!--#local-computer-->
 - cd /tmp
 - git clone https://github.com/div-cz/div_ansible.git
-- RUN PowerShell as an administrator
-    - wsl --install
+- sudo apt update
+- sudo apt install ansible
+- ansible-playbook
 
 ## License<!--#license-->
 This project is shared under the MIT License. See `LICENSE.md` for details.

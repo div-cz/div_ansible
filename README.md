@@ -29,7 +29,7 @@ Ubuntu server 23.10
     - ssh_args = -o ServerAliveInterval=10
 
 ## Local computer<!--#local-computer-->
-- cd /tmp
+- cd /home/user/tmp
 - git clone https://github.com/div-cz/div_ansible.git
 - sudo apt update
 - sudo apt install ansible

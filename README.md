@@ -32,9 +32,8 @@ Ubuntu server 23.10
 ## Local computer<!--#local-computer-->
 - cd /tmp
 - git clone https://github.com/div-cz/div_ansible.git
-
-## Server 1 again<!--#server-again-->
-- ansible all -m ping
+- RUN PowerShell as an administrator
+    - wsl --install
 
 ## License<!--#license-->
 This project is shared under the MIT License. See `LICENSE.md` for details.

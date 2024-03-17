@@ -17,8 +17,8 @@ Ubuntu server 23.10
 - cd /home/user/.ansible
 - touch hosts
 - nano hosts
-          - webservers: 
-          - 46.28.110.160
+          -- webservers: 
+          -- 46.28.110.160
 - touch ansible.cfg
           [defaults]
           inventory = /home/divcz/.ansible/hosts

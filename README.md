@@ -5,7 +5,8 @@ Make a server great again.
 1. [Prerequisites](#prerequisites)
 2. [How to start](#how-to-start)
 3. [Local Computer](#local-computer)
-4. [License](#license)
+4. [Server 1](#server-again)
+5. [License](#license)
 
 ## Prerequisites<!--#prerequisites-->
 Ubuntu server 23.10
@@ -31,6 +32,8 @@ Ubuntu server 23.10
 ## Local computer<!--#local-computer-->
 - cd /tmp
 - git clone https://github.com/div-cz/div_ansible.git
+
+## Server 1 again<!--#server-again-->
 - ansible all -m ping
 
 ## License<!--#license-->

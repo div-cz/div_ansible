@@ -31,6 +31,7 @@ Ubuntu server 23.10
 ## Local computer<!--#local-computer-->
 - cd /tmp
 - git clone https://github.com/div-cz/div_ansible.git
+- ansible all -m ping
 
 ## License<!--#license-->
 This project is shared under the MIT License. See `LICENSE.md` for details.

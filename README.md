@@ -16,7 +16,17 @@ Ubuntu server 23.10
 - sudo apt install ansible
 - cd /home/user/.ansible
 - touch hosts
+- nano hosts
+          webservers: 
+          46.28.110.160
 - touch ansible.cfg
+          [defaults]
+          inventory = /home/divcz/.ansible/hosts
+          host_key_checking = False
+          remote_user = divcz
+          private_key_file=/home/divcz/.ssh/ansible_rsa
+          [ssh_connection]
+          ssh_args = -o ServerAliveInterval=10
 
 ## Local computer<!--#local-computer-->
 - cd /tmp

@@ -16,6 +16,13 @@
     group: root
     mode: '0644'
 
+- name: Create log directory
+  file:
+    path: /var/log/mysql
+    state: directory
+    owner: root
+    group: root
+
 - name: Touch the log file
   ansible.builtin.file:
     path: /var/log/mysql/mysql.log

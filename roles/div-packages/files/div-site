@@ -1,0 +1,45 @@
+# Virtual Host configuration for example.com
+#
+# You can move that to a different file under sites-available/ and symlink that
+# to sites-enabled/ to enable it.
+#
+server {
+
+	server_name test.div.cz;
+
+	#root /var/www/div_app/div_content/templates;
+	#index index.html;
+
+	root /var/www/div_app/staticfiles/;
+	index index.html index.htm index.nginx-debian.html;
+
+	location / {
+                include uwsgi_params;
+		uwsgi_pass unix:/var/www/div_app/div.sock;
+		try_files $uri $uri/ =404;
+	}
+	location /static/ {
+		alias /var/www/div_app/staticfiles/;
+	}
+
+    #listen 443 ssl; # managed by Certbot
+    #ssl_certificate /etc/letsencrypt/live/test.div.cz/fullchain.pem; # managed by Certbot
+    #ssl_certificate_key /etc/letsencrypt/live/test.div.cz/privkey.pem; # managed by Certbot
+    #include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    #ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+server {
+    if ($host = test.div.cz) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	listen 80;
+
+	server_name test.div.cz;
+    return 404; # managed by Certbot
+
+
+}

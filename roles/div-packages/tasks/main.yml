@@ -24,6 +24,8 @@
       - python3-pip
       - libpq-dev
       - build-essential
+      - uwsgi
+      - python3-django
       - ufw
     state: latest
 
@@ -47,17 +49,28 @@
   become_user: www-data
   ansible.builtin.command: python3 -m venv /var/www/div_app
 
-- name: Install python packages
-  ansible.builtin.pip:
-    virtualenv: /var/www/div_app
-    state: present
-    name:
-      - uwsgi
-      - django
-
 - name: Copy uwsgi config
   ansible.builtin.copy:
     src: files/div.ini
-    dest: /var/www/div_app/div.ini
-    owner: www-data
-    group: www-data
+    dest: /etc/uwsgi/apps-available/div.ini
+    owner: root
+    group: root
+
+- name: Create symbolic link
+  file:
+    src: /etc/uwsgi/apps-available/div.ini
+    dest: /etc/uwsgi/apps-enabled/div.ini
+    state: link
+
+- name: Copy site config
+  ansible.builtin.copy:
+    src: files/div-site
+    dest: /etc/nginx/sites-available
+    owner: root
+    group: root
+
+- name: Create symbolic link
+  file:
+    src: /etc/nginx/sites-available/div-site
+    dest: /etc/nginx/sites-enabled/div-site
+    state: link

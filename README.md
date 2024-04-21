@@ -9,6 +9,11 @@ Make a server great again.
 
 ## Prerequisites<!--#prerequisites-->
 Ubuntu server 23.10
+- Network connections
+    - Subnet: 46.28.109.0/24
+    - Adress: 46.28.109.13
+- sudo adduser name
+- sudo usermod -aG sudo name
 
 ## How to start<!--#how-to-start-->
 - sudo apt update
